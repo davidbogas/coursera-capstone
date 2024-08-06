@@ -18,8 +18,8 @@ function Navbar () {
             </div>
             <ul className={ isOpen ? 'nav open' : 'nav' }>
                 <li><NavLink to="/" className="nav-link">Home</NavLink></li>
-                <li><a href="/#about" className="nav-link">About</a></li>
-                <li><a href="/#menu" className="nav-link">Menu</a></li>
+                <li><NavLink to="/about" className="nav-link">About</NavLink></li>
+                <li><NavLink to="/menu" className="nav-link">Menu</NavLink></li>
                 <li><NavLink to="/reservation" className="nav-link">Reservation</NavLink></li>
                 <li><NavLink to="/order" className="nav-link">Order online</NavLink></li>
                 <li><NavLink to="/login" className="nav-link">Log in</NavLink></li>

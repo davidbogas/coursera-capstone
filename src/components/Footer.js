@@ -12,11 +12,11 @@ function Footer() {
                     </h3>
                     <ul>
                         <li><Link to="/">Home</Link></li>
-                        <li><a href="/#about">About</a></li>
-                        <li><a href="/#menu">Menu</a></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/menu">Menu</Link></li>
                         <li><Link to="/reservation">Reservations</Link></li>
-                        <li><Link to="/">Order Online</Link></li>
-                        <li><Link to="/">Login</Link></li>
+                        <li><Link to="/order">Order Online</Link></li>
+                        <li><Link to="/login">Login</Link></li>
                     </ul>
                 </div>
                 <div>
