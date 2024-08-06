@@ -8,6 +8,10 @@ function Validation() {
 
     const { formData } = location.state || {};
 
+    const parts = formData.date.split('-');
+
+    const date = `${parts[1]}-${parts[2]}-${parts[0]}`;
+
     const navigate = useNavigate();
 
     const formik = useFormik({
@@ -35,7 +39,7 @@ function Validation() {
             <div className="container">
                 <div className="data-wrapper">
                     <h2 className="data-title">Date:</h2>
-                    <p className="data-value">{formData.date}</p>
+                    <p className="data-value">{date}</p>
                     <h2 className="data-title">Time:</h2>
                     <p className="data-value">{formData.time}</p>
                     <h2 className="data-title">Number of guests:</h2>
