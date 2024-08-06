@@ -10,7 +10,7 @@ function Confirmation() {
             <header className="section-header">
                 <h2 className="section-title">Thank you for your reservation, {formData.name}!</h2>
                 <h3>We will send you a confirmation email with all the details.</h3>
-                <div style={{ paddingTop: '2rem' }}>
+                <div style={{ paddingTop: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
                     <Btn text="Back to Home" link="/" />
                 </div>
             </header>
