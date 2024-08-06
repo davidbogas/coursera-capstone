@@ -1,9 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import Btn from "./Btn";
 
 function Confirmation() {
-    const navigate = useNavigate();
 
     const { formData } = useLocation().state || {};
 
