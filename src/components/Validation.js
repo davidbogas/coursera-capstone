@@ -10,7 +10,7 @@ function Validation() {
 
     const parts = formData.date.split('-');
 
-    const date = `${parts[1]}-${parts[2]}-${parts[0]}`;
+    const date = `${parts[2]}/${parts[1]}/${parts[0]}`;
 
     const navigate = useNavigate();
 

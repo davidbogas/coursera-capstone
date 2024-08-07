@@ -1,10 +1,31 @@
 import { useNavigate } from "react-router-dom";
+import { useReducer, useState, useEffect } from "react";
+import { fetchAPI, submitAPI } from "./DateAPI.js";
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 
 function Reservation() {
 
     const navigate = useNavigate();
+
+    const [availableTimes, setAvailableTimes] = useState([]);
+
+    function initializeTimes() {
+        const date = new Date();
+        const times = fetchAPI(date);
+        setAvailableTimes(times);
+    }
+
+    useEffect(() => {
+        initializeTimes();
+    }, []);
+
+    function updateTimes(event) {
+        const date = new Date(event.target.value);
+        const times = fetchAPI(date);
+        setAvailableTimes(times);
+        formik.handleChange(event);
+    }
 
     const formik = useFormik({
         initialValues: {
@@ -14,10 +35,10 @@ function Reservation() {
             occasion: '',
         },
         validationSchema: Yup.object({
-            date: Yup.string().required('Date is required'),
-            time: Yup.string().required('Time is required').oneOf(['7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM'], 'Please select a valid time'),
+            date: Yup.date().required('Date is required'),
+            time: Yup.string().required('Time is required').oneOf(['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'], 'Please select a valid time'),
             numberGuests: Yup.number().required('Number of guests is required').min(1, 'At least one guest is required').max(10, 'Maximum 10 guests are allowed'),
-            occasion: Yup.string().required('Occasion is required'),
+            occasion: Yup.string().required('Occasion is required').oneOf(['Nothing', 'Birthday', 'Anniversary'], 'Please select a valid occasion'),
         }),
         onSubmit: (values) => {
             navigate('/validation', { state: { formData: values } });
@@ -39,7 +60,7 @@ function Reservation() {
                             type="date"
                             name="date"
                             id="date"
-                            onChange={formik.handleChange}
+                            onChange={updateTimes}
                             onBlur={formik.handleBlur}
                             value={formik.values.date}
                             className={formik.touched.date && formik.errors.date ? 'input-error' : ''}
@@ -58,14 +79,10 @@ function Reservation() {
                             value={formik.values.time}
                             className={formik.touched.time && formik.errors.time ? 'input-error' : ''}
                             >
-                                <option value="Select a time">Select an hour</option>
-                                <option value="7:00 PM">7:00 PM</option>
-                                <option value="7:30 PM">7:30 PM</option>
-                                <option value="8:00 PM">8:00 PM</option>
-                                <option value="8:30 PM">8:30 PM</option>
-                                <option value="9:00 PM">9:00 PM</option>
-                                <option value="9:30 PM">9:30 PM</option>
-                                <option value="10:00 PM">10:00 PM</option>
+                                <option value="Select a time">Select a time</option>
+                                {availableTimes.map((time) => {
+                                    return <option value={time}>{time}</option>
+                                })}
                             </select>
                             {formik.touched.time && formik.errors.time ? (
                                 <p className="form-error">{formik.errors.time}</p>
