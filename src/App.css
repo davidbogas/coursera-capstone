@@ -334,11 +334,20 @@ ul {
   right: 0px;
 }
 
+footer {
+  background-color: #495E57;
+  color: white;
+}
+
 footer .container {
   padding: 3rem 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+footer img {
+  height: 200px;
 }
 
 footer h3 {
@@ -513,27 +522,35 @@ form button:hover {
 
 @media (width <= 1024px) {
   nav {
+    z-index: 10;
     flex-wrap: wrap;
-    height: auto;
   }
 
   .nav {
-    z-index: 10;
-    display: none;
+    z-index: 5;
+    position: absolute;
+    background-color: transparent;
     width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
+    top: -100%;
+    left: 0;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
   }
 
   .nav.open {
-    display: flex;
+    top: 90px;
+    opacity: 1;
+    background-color: #FFFFFF;
   }
 
   .burger-menu {
     display: block;
+    font-size: 2rem;
   }
 
   .hero img {
@@ -552,6 +569,14 @@ form button:hover {
   }
 }
 @media (width <= 768px) {
+  nav {
+    height: 75px;
+  }
+
+  .nav.open {
+    top: 75px;
+  }
+
   .logo-header {
     width: 150px;
   }

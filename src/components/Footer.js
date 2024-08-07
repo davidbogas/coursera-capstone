@@ -1,5 +1,8 @@
-import logoFooter from "../assets/img/logo_footer.png";
+import logoFooter from "../assets/img/logo_footer_bw.png";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 function Footer() {
     return (
@@ -23,17 +26,20 @@ function Footer() {
                     <h3>
                         Contact
                     </h3>
-                    <p>Email: info@food-delivery.com</p>
-                    <p>Phone: +1 (555) 555-5555</p>
+                    <ul>
+                        <li><FontAwesomeIcon icon={faLocationDot} /> 123 Main Street, Chicago USA</li>
+                        <li><FontAwesomeIcon icon={faEnvelope} /> info@littlelemon.com</li>
+                        <li><FontAwesomeIcon icon={faPhone} /> +1 (555) 555-5555</li>
+                    </ul>
                 </div>
                 <div>
                     <h3>
                         Social
                     </h3>
                     <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#"><FontAwesomeIcon icon={faFacebook} /></a></li>
+                        <li><a href="#"><FontAwesomeIcon icon={faInstagram} /></a></li>
+                        <li><a href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
                     </ul>
                 </div>
             </div>

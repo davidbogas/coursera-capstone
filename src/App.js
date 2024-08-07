@@ -12,7 +12,7 @@ import ScrollToTop from './components/ScrollToTop';
 function App() {
   return (
     <>
-    <BrowserRouter basename="/littlelemon">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <ScrollToTop />
       <Header />
       <Routes>
