@@ -11,14 +11,15 @@ function Reservation() {
             date: new Date().toISOString().split('T')[0],
             time: '',
             numberGuests: '1',
+            occasion: '',
         },
         validationSchema: Yup.object({
             date: Yup.string().required('Date is required'),
             time: Yup.string().required('Time is required').oneOf(['7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM', '9:00 PM', '9:30 PM', '10:00 PM'], 'Please select a valid time'),
             numberGuests: Yup.number().required('Number of guests is required').min(1, 'At least one guest is required').max(10, 'Maximum 10 guests are allowed'),
+            occasion: Yup.string().required('Occasion is required'),
         }),
         onSubmit: (values) => {
-            console.log(values);
             navigate('/validation', { state: { formData: values } });
         }
     });
@@ -83,6 +84,25 @@ function Reservation() {
                             />
                             {formik.touched.numberGuests && formik.errors.numberGuests ? (
                                 <p className="form-error">{formik.errors.numberGuests}</p>
+                            ) : null}
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="occasion">Occasion*</label>
+                            <select
+                            name="occasion"
+                            id="occasion"
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik.values.occasion}
+                            className={formik.touched.occasion && formik.errors.occasion ? 'input-error' : ''}
+                            >
+                                <option value="Select an occasion">Select an occasion</option>
+                                <option value="Nothing">Nothing special</option>
+                                <option value="Birthday">Birthday</option>
+                                <option value="Anniversary">Anniversary</option>
+                            </select>
+                            {formik.touched.occasion && formik.errors.occasion ? (
+                                <p className="form-error">{formik.errors.occasion}</p>
                             ) : null}
                         </div>
                         <div className="form-group">

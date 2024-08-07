@@ -16,6 +16,10 @@ function Validation() {
 
     const formik = useFormik({
         initialValues: {
+            date: formData.date,
+            time: formData.time,
+            numberGuests: formData.numberGuests,
+            occasion: formData.occasion,
             name: '',
             email: '',
             terms: false,
@@ -26,6 +30,7 @@ function Validation() {
             terms: Yup.boolean().required('Terms is required').oneOf([true], 'Please accept the Terms and Conditions'),
         }),
         onSubmit: (values) => {
+            console.log(values);
             navigate('/confirmation', { state: { formData: values } });
         }
     });
@@ -48,6 +53,9 @@ function Validation() {
                 <div className="form-wrapper" style={{ paddingTop: '1rem' }}>
                     <form onSubmit={formik.handleSubmit}>
                         <div className="form-group">
+                            <input type="hidden" name="date" value={formData.date} />
+                            <input type="hidden" name="time" value={formData.time} />
+                            <input type="hidden" name="numberGuests" value={formData.numberGuests} />
                             <label htmlFor="name">Name*</label>
                             <input
                             type="text"
