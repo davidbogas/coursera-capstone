@@ -6,7 +6,7 @@ import { faLocationDot, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-
 
 function Footer() {
     return (
-        <footer>
+        <footer className="footer">
             <div className="container">
                 <img src={logoFooter} alt='logo' />
                 <div>
@@ -37,9 +37,9 @@ function Footer() {
                         Social
                     </h3>
                     <ul>
-                        <li><a href="#"><FontAwesomeIcon icon={faFacebook} /></a></li>
-                        <li><a href="#"><FontAwesomeIcon icon={faInstagram} /></a></li>
-                        <li><a href="#"><FontAwesomeIcon icon={faTwitter} /></a></li>
+                        <li><a href="#"><FontAwesomeIcon icon={faFacebook} className="footer-icon" /></a></li>
+                        <li><a href="#"><FontAwesomeIcon icon={faInstagram} className="footer-icon" /></a></li>
+                        <li><a href="#"><FontAwesomeIcon icon={faTwitter} className="footer-icon" /></a></li>
                     </ul>
                 </div>
             </div>

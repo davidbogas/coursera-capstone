@@ -334,9 +334,13 @@ ul {
   right: 0px;
 }
 
-footer {
+.footer {
   background-color: #495E57;
   color: white;
+}
+
+.footer a:hover {
+  color: #EE9972;
 }
 
 footer .container {
@@ -362,6 +366,10 @@ footer ul {
 
 footer ul li {
   margin: 0.5rem 0;
+}
+
+.footer-icon {
+  font-size: 1.5rem;
 }
 
 .btn {
